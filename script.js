@@ -4,6 +4,8 @@ const cpsDisplay = document.getElementById("cps-display");
 const autoClicker = document.getElementById("auto_clicker");
 const upgradeBtn = document.getElementById("upgr-Btn");
 const upgradeContainer = document.querySelector("div");
+const upgradeNameDisplay = document.getElementById("upgrade-name");
+const levelTopRight = document.querySelector(".levels");
 
 let cookies = Number(localStorage.getItem("cookies")) || 0;
 let cps = Number(localStorage.getItem("cps"));
@@ -46,14 +48,11 @@ upgradeBtn.addEventListener("click", () => {
     localStorage.clear("cps");
 
     let newh2 = document.createElement("h2");
-    newh2.textContent += `${upgrades[counter].name}: costs ${upgrades[counter].cost} cookies, click the button below to buy.`;
+    newh2.textContent += `${upgrades[counter].name}: costs ${upgrades[counter].cost}`;
     upgradeContainer.append(newh2);
-    // upgradeContainer.append(newBtn);
-    // newBtn.textContent = `Buy upgrades ${upgrades[counter].id}`;
 
     counter++;
   }
-  //   upgradeBtn.disabled = true;
 });
 
 // newBtn.addEventListener("click", () => {
