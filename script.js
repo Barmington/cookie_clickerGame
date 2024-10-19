@@ -6,6 +6,9 @@ const upgradeBtn = document.getElementById("upgr-Btn");
 const upgradeContainer = document.querySelector("div");
 const upgradeNameDisplay = document.getElementById("upgrade-name");
 const levelTopRight = document.querySelector(".levels");
+// const nextUpgrNotification = document.querySelector("nextUpgrAlert");
+
+console.log(nextUpgrNotification);
 
 let cookies = Number(localStorage.getItem("cookies")) || 0;
 let cps = Number(localStorage.getItem("cps"));
@@ -38,6 +41,7 @@ cookieBtn.addEventListener("click", () => {
 });
 
 const newBtn = document.createElement("button");
+let newh2 = document.createElement("h2");
 
 upgradeBtn.addEventListener("click", () => {
   if (cookies >= upgrades[counter].cost) {
@@ -47,12 +51,13 @@ upgradeBtn.addEventListener("click", () => {
     localStorage.setItem("cps", cps);
     localStorage.clear("cps");
 
-    let newh2 = document.createElement("h2");
-    newh2.textContent += `${upgrades[counter].name}: costs ${upgrades[counter].cost}`;
+    newh2.textContent = `Upgrade level (${upgrades[counter].id}) - ${upgrades[counter].name}`;
     upgradeContainer.append(newh2);
-
-    counter++;
   }
+  for (let i = 0; i < upgrades.length; i++) {
+    levelTopRight.textContent = `(level ${counter + 1} of 10)`;
+  }
+  counter++;
 });
 
 // newBtn.addEventListener("click", () => {
